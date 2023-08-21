@@ -9,7 +9,7 @@ const disconnect = async ()=>{
     mongoose.connection.close();
 }
 const findUser = async (obj)=>{
-    User.findOne(obj);
+   return User.findOne(obj).exec();
 }
 const saveUser = async (newUser)=>{
     return await newUser.save();
