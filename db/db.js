@@ -6,7 +6,7 @@ const connect = async()=>{
     console.log('Connect to mongoDb successfully');       
 }
 const disconnect = async ()=>{
-    mongoose.connection.close();
+    await mongoose.connection.close();
 }
 const findUser = async (obj)=>{
    return User.findOne(obj).exec();

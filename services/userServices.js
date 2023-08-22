@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 exports.registerUser = async (req, res) => {
     try {
+        console.log(req.body)
         const registerUser = await findUser({ email: req.body.email });
         if (registerUser) {
             throw new Error('User existed. Please logging in');
@@ -23,7 +24,7 @@ exports.registerUser = async (req, res) => {
                 user =>{
                     return res.status(201).json({
                         message: 'Register user successfully',
-                        data: user
+                        user: user
                     })
                 }
             ).catch(err=>{
