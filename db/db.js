@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/userModel.js');
 require('dotenv').config();
 const connect = async()=>{
+    console.log(process.env.mongo_url)
     await mongoose.connect(process.env.mongo_url);
     console.log('Connect to mongoDb successfully');       
 }
