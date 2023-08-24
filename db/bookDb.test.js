@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {  findBook, findBooks, updateBook, deleteBook, saveBook} = require('./bookDb.js');
 const Book = require('../models/bookModel.js');
-jest.mock('./bookDb.js')
+jest.mock('./bookDb')
 
 describe("Test Book Suite", ()=>{
     test("As a user I want to save a book to DB", async ()=>{

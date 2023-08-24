@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Author = require('../models/authorModel')
 const {findAuthorByBookId, findAuthors, updateAuthor, deleteAuthor, saveAuthor}=require('../db/authorDb')
-jest.mock('./authorDb.js')
+jest.mock('./authorDb')
 
 describe("Test Author Suite", ()=>{
     test("As a user I want to save a author to DB", async ()=>{
