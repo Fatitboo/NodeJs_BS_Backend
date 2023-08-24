@@ -1,0 +1,21 @@
+module.exports = {
+    book_not_found : "book not found",
+    book_found : "Book found",
+    book_categoried:"Book has been categoried",
+    book_saved:"Book saved successful",
+    book_updated:"Update book successful",
+    book_not_updated:"Book not updated",
+    book_not_deleted:"Book not deleted",
+    book_deleted:"Delete book successful",
+    author_exist:"Author existed",
+    author_saved:"Save author successful",
+    authors_found:"Authors found",
+    authors_not_found:"Authors not found",
+    author_found:"Author found",
+    author_not_found:"Author not found",
+    author_updated:"Author updated successful",
+    author_not_updated:"Author not updated",
+    author_deleted:"Author deleted successful",
+    author_not_deleted:"Author not deleted",
+    auth_failed: "Authorization failed"
+}

@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const {connect} = require('../db/db.js')
 const userRouter = require('../router/userRouter.js')
+const bookRouter = require('../router/bookRouter.js')
+const authorRouter = require('../router/authorRouter.js')
 const app = express();
 
 // use middleware to form our contract for incoming json payload ONLY
@@ -18,6 +20,9 @@ app.get('/', (req, res, next)=>{
 });
 //route
 app.use('/users', userRouter);
+app.use('/books', bookRouter);
+app.use('/authors', authorRouter);
+
 // bad request err or url we can handler with middlerware
 app.use((req, res, next)=>{
     const error = new Error("Not found");

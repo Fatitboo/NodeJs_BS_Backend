@@ -1,5 +1,5 @@
-const errorTemplate = (res, err, message) =>{
-    return res.status(501).json({
+const errorTemplate = (res, err, message, errStatus=501) =>{
+    return res.status(errStatus).json({
         error: {
             message: message,
             status: err.status

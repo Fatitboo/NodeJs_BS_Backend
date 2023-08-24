@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', (req, res, next)=>{
-    res.status(200).json({
-        message: 'GET successfully',
-        metadata:{
-            hostname: req.hostname,
-            method: req.method
-        }
-    })
-});
-router.get('/:id', (req, res, next)=>{
-    res.status(200).json({
-        message: 'GET by id user',
-        metadata:{
-            id: req?.params?.id
-        }
-    })
-})
+const { getAllBooks, getBookById, postBook, updateBookById, deleteBookById, getAllBooksId } = require('../services/bookServices.js')
+const auth = require('../auth/authorization')
+
+router.get('/', [auth, getAllBooks]);
+
+router.get('/books', [auth, getAllBooksId])
+
+router.get('/:id', [auth, getBookById])
+
+
+router.post('/', [auth, postBook]);
+
+router.put('/:id', [auth, updateBookById]);
+
+router.delete('/:id', [auth, deleteBookById]);
+
 module.exports = router
