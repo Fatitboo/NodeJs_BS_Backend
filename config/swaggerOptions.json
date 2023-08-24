@@ -1,0 +1,549 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+        "title": "NodeJs BootCamp Documentation API",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Nguyen van phat",
+            "email": "vanphat@gmail.com",
+            "url": "http://nguyenvanphat.nft"
+        }
+    },
+    "servers": [
+        {
+            "description": "Local servers",
+            "url": "http://localhost:3001"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth":{
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth":[]
+        }
+    ],
+    "paths": {
+        "/users/register":{
+            "post":{
+                "tags": ["Users"],
+                "description": "Register user",
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "firstName":{
+                                        "type": "string",
+                                        "default":"Phat"
+                                    },
+                                    "lastName":{
+                                        "type": "string",
+                                        "default":"Nguyen"
+                                    },
+                                    "address":{
+                                        "type": "string",
+                                        "default":"Binh Chuong"
+                                    },
+                                    "city":{
+                                        "type": "string",
+                                        "default":"Quang Ngai"
+                                    },
+                                    "state":{
+                                        "type": "string",
+                                        "default":"Viet Nam"
+                                    },
+                                    "zip":{
+                                        "type": "string",
+                                        "default":"30003"
+                                    },
+                                    "email":{
+                                        "type": "string",
+                                        "default":"vanphat@gmail.com"
+                                    },
+                                    "password":{
+                                        "type": "string",
+                                        "default":"12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/users/login":{
+            "post":{
+                "tags":["Users"],
+                "description":"Login user",
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "email":{
+                                        "type": "string",
+                                        "default":"vanphat@gmail.com"
+                                    },
+                                    "password":{
+                                        "type": "string",
+                                        "default":"12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/books":{
+            "post":{
+                "tags": ["Books"],
+                "description": "Save a book",
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "title":{
+                                        "type": "string",
+                                        "default":"Dac Nhan Tam"
+                                    },
+                                    "author":{
+                                        "type": "string",
+                                        "default":"Teo Nguyen"
+                                    },
+                                    "ISBN":{
+                                        "type": "string",
+                                        "default":"12-23482-23478"
+                                    },
+                                    "numberOfPages":{
+                                        "type": "number",
+                                        "default":300
+                                    },
+                                    "price":{
+                                        "type": "number",
+                                        "default":300000
+                                    },
+                                    "yearPublished":{
+                                        "type": "string",
+                                        "default":"2003"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            },
+            "get":{
+                "tags": ["Books"],
+                "description": "Get a book",
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/books/{bookId}":{
+            "get":{
+                "tags": ["Books"],
+                "description": "Get book by id",
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "in": "path",
+                        "description": "The book id",
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            },
+            "put":{
+                "tags": ["Books"],
+                "description": "Update book by id",
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "in": "path",
+                        "description": "The book id",
+                        "required": true
+                    }
+                ], 
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "title":{
+                                        "type": "string",
+                                        "default":"Dac Nhan Tam he he he"
+                                    },
+                                    "author":{
+                                        "type": "string",
+                                        "default":"Teo Nguyen"
+                                    },
+                                    "ISBN":{
+                                        "type": "string",
+                                        "default":"12-23482-23478"
+                                    },
+                                    "numberOfPages":{
+                                        "type": "number",
+                                        "default":300
+                                    },
+                                    "price":{
+                                        "type": "number",
+                                        "default":300000
+                                    },
+                                    "yearPublished":{
+                                        "type": "string",
+                                        "default":"2003"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            },
+            "delete":{
+                "tags": ["Books"],
+                "description": "Delete book by id",
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "in": "path",
+                        "description": "The book id",
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/authors":{
+            "post":{
+                "tags": ["Authors"],
+                "description": "Save a Authors",
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "name":{
+                                        "type": "string",
+                                        "default":"Teo Nguyen"
+                                    },
+                                    "book":{
+                                        "type": "string",
+                                        "default":"64e712fcfe48b3e2527453ac"
+                                    },
+                                    "publisher":{
+                                        "type": "string",
+                                        "default":"Cong ty TNHHMMT"
+                                    },
+                                    "website":{
+                                        "type": "string",
+                                        "default":"http://nguyenvanphat"
+                                    },
+                                    "twitter":{
+                                        "type": "string",
+                                        "default":"@PhatNguyen"
+                                    },
+                                    "about":{
+                                        "type": "string",
+                                        "default":"I'm an handsome author"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            },
+            "get":{
+                "tags": ["Authors"],
+                "description": "Get all Authors",
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/Authors/{authorId}":{
+            "get":{
+                "tags": ["Authors"],
+                "description": "Get Author by id",
+                "parameters": [
+                    {
+                        "name": "authorId",
+                        "in": "path",
+                        "description": "The author id",
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            },
+            "patch":{
+                "tags": ["Authors"],
+                "description": "Update author by id",
+                "parameters": [
+                    {
+                        "name": "authorId",
+                        "in": "path",
+                        "description": "The author id",
+                        "required": true
+                    }
+                ], 
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "name":{
+                                        "type": "string",
+                                        "default":"Teo Nguyen"
+                                    },
+                                    "book":{
+                                        "type": "string",
+                                        "default":"64e712fcfe48b3e2527453ac"
+                                    },
+                                    "publisher":{
+                                        "type": "string",
+                                        "default":"Cong ty TNHHMMT"
+                                    },
+                                    "website":{
+                                        "type": "string",
+                                        "default":"http://nguyenvanphat"
+                                    },
+                                    "twitter":{
+                                        "type": "string",
+                                        "default":"@PhatNguyen"
+                                    },
+                                    "about":{
+                                        "type": "string",
+                                        "default":"I'm an handsome author"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            },
+            "delete":{
+                "tags": ["Authors"],
+                "description": "Delete Authors by id",
+                "parameters": [
+                    {
+                        "name": "authorId",
+                        "in": "path",
+                        "description": "The Authors id",
+                        "required": true
+                    }
+                ], 
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "201":{
+                        "description": "Success"
+                    },
+                    "404":{
+                        "description": "Not found"
+                    },
+                    "500":{
+                        "description": "Error"
+                    },
+                    "501":{
+                        "description": "Error"
+                    }
+                }
+            }
+        }
+        
+    }
+}

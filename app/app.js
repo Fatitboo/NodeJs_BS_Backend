@@ -4,6 +4,8 @@ const {connect} = require('../db/db.js')
 const userRouter = require('../router/userRouter.js')
 const bookRouter = require('../router/bookRouter.js')
 const authorRouter = require('../router/authorRouter.js')
+const swaggerUi = require('swagger-ui-express') 
+const document = require('../config/swaggerOptions.json')
 const app = express();
 
 // use middleware to form our contract for incoming json payload ONLY
@@ -12,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // use middleware to handle cors policy
 app.use(cors());
-
+// use mddleware for api-docs swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(document))
 app.get('/', (req, res, next)=>{
     res.status(200).json({
         message: 'Service is up'
