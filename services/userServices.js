@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const errorTemplate = require("../templates/errorTemplate.js");
 const User = require('../models/userModel.js');
 const mongoose = require('mongoose');
+const successTemplate = require("../templates/succesTemplate.js");
+const messages = require("../messages/messages.js");
 
 exports.registerUser = async (req, res) => {
     try {
@@ -45,12 +47,8 @@ exports.loginUser = async (req, res) => {
             if (result) {
                 user.password = "not show"
                 const token = jwt.sign({ user: user }, process.env.jwt_secret);
-                return res.status(201).json({
-                    user: user,
-                    logged: true,
-                    token: token,
-                    message: "login successfully"
-                })
+                return successTemplate(res, user, "login successfully",201, true, token)
+                
             } else {
                 throw new Error('Authentication failed: Email or password does not match.')
             }

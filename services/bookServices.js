@@ -46,6 +46,7 @@ exports.postBook = async (req, res) => {
                 _id: new mongoose.Types.ObjectId(),
                 ...req.body
             });
+            console.log(newBook)
             const savedBook = await saveBook(newBook)
             return successTemplate(res, savedBook, messages.book_saved, 201, true)
         }
